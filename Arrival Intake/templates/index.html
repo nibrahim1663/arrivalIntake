@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Arrival Intake Form</title>
+    <script>
+        // Function to toggle the display of the 'family_members_speak' field based on the value of 'speaks_english_french'.
+        function toggleFamilyMembersSpeak() {
+            var speaksEnglishFrench = document.getElementById('speaks_english_french');
+            var familyMembersSpeak = document.getElementById('family_members_speak_field');
+            if (speaksEnglishFrench.value === 'yes') {
+                familyMembersSpeak.style.display = 'block';
+            }
+            else {
+                familyMembersSpeak.style.display = 'none';
+            }
+        }
+
+        // Function to initialize the toggle functionality on page load.
+        window.onload = function () {
+            toggleFamilyMembersSpeak();
+            document.getElementById('speaks_english_french').addEventListener('change', toggleFamilyMembersSpeak);
+        };
+    </script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Arrival Intake Form</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="alert alert-success">
+            {{ messages[0][1] }}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class_="form-control" + (" is-invalid" if form.email.errors else "")) }}
+                {% if form.email.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.uci_number.label(class="form-label") }}
+                {{ form.uci_number(class_="form-control" + (" is-invalid" if form.uci_number.errors else "")) }}
+                {% if form.uci_number.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.uci_number.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.received_by.label(class="form-label") }}
+                {{ form.received_by(class_="form-control" + (" is-invalid" if form.received_by.errors else "")) }}
+                {% if form.received_by.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.received_by.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.temp_accom.label(class="form-label") }}
+                {{ form.temp_accom(class_="form-control" + (" is-invalid" if form.temp_accom.errors else "")) }}
+                {% if form.temp_accom.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.temp_accom.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group form-check">
+                {{ form.phone(class="form-check-input") }}
+                {{ form.phone.label(class="form-check-label") }}
+            </div>
+            <div class="form-group">
+                {{ form.phone_number.label(class="form-label") }}
+                {{ form.phone_number(class_="form-control" + (" is-invalid" if form.phone_number.errors else "")) }}
+                {% if form.phone_number.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.phone_number.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.client_email.label(class="form-label") }}
+                {{ form.client_email(class_="form-control" + (" is-invalid" if form.client_email.errors else "")) }}
+                {% if form.client_email.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.client_email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.speaks_english_french.label(class="form-label") }}
+                {{ form.speaks_english_french(class_="form-control" + (" is-invalid" if
+                form.speaks_english_french.errors else "")) }}
+                {% if form.speaks_english_french.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.speaks_english_french.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group" id="family_members_speak_field" style="display: none;">
+                {{ form.family_members_speak.label(class="form-label") }}
+                {{ form.family_members_speak(class_="form-control" + (" is-invalid" if form.family_members_speak.errors
+                else "")) }}
+                {% if form.family_members_speak.errors %}
+                <div class="invalid-feedback">
+                    {% for error in form.family_members_speak.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

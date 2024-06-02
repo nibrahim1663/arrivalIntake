@@ -1,0 +1,19 @@
+1) Navigate to: https://www.pythonanywhere.com/login/
+
+2) User Name: NawriIbrah , Password: NwrDna@1663
+
+3) Once logged-in, click on Web tab
+
+4) Then click on NawriIbrah.pythonanywhere.com and you will be taken to fill and submit the form
+
+5) A feedback should be displayed if the form has been successfully submitted
+
+6) Now, we can check if the information submitted from the form has been successfully inserted into our database
+
+7) Go back twice then click on Databases 
+
+8) Under Your databases: click on NawriIbrah$usersdb and wait for MySQL to load
+
+9) Once in, type: select * from arrivalInfo;
+
+10) We should see all the inforamtion submitted from the arrival intake form has been recorded into this table.
